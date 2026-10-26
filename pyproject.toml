@@ -1,0 +1,43 @@
+[project]
+name = "robots-unitree-go2"
+version = "0.1.0"
+description = "Unitree Go2 SportClient adapter for PhyAgentOS"
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE", "THIRD_PARTY_NOTICES.md"]
+authors = [{ name = "PhyAgentOS Contributors" }]
+maintainers = [{ name = "PhyAgentOS Contributors" }]
+keywords = ["robot", "unitree", "go2", "dora", "sportclient"]
+dependencies = [
+    "dora-rs==0.4.1",
+    "pyarrow>=14,<24",
+    "pyyaml>=6.0,<7",
+    "unitree-sdk2py",
+]
+
+[project.urls]
+Homepage = "https://github.com/PhyAgentOS/adapter-robot-unitree-go2"
+Repository = "https://github.com/PhyAgentOS/adapter-robot-unitree-go2.git"
+Issues = "https://github.com/PhyAgentOS/adapter-robot-unitree-go2/issues"
+
+[project.scripts]
+robots-unitree-go2 = "robots_unitree_go2.main:main"
+robots_unitree_go2 = "robots_unitree_go2.main:main"
+
+[project.optional-dependencies]
+pyinstaller = ["pyinstaller==6.16.0"]
+test = ["pytest>=8,<10"]
+
+[build-system]
+requires = ["uv_build>=0.8.17,<0.9.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "robots_unitree_go2"
+
+[tool.uv.sources]
+unitree-sdk2py = { path = "vendor/unitree_sdk2_python", editable = true }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
