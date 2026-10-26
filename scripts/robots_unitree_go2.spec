@@ -25,7 +25,10 @@ sdk_data = [
 ]
 cyclonedds_binaries = collect_dynamic_libs("cyclonedds")
 cyclonedds_binaries.append(
-    (os.path.join(_cyclonedds_prefix, "lib", "libddsc.so.0.10.2"), ".")
+    (
+        os.path.join(_cyclonedds_prefix, "lib", "libddsc.so"),
+        "cyclonedds_runtime/lib",
+    )
 )
 
 a = Analysis(
@@ -38,7 +41,7 @@ a = Analysis(
     + ["dora", "dora_rs", "numpy", "pyarrow", "yaml"],
     hookspath=[],
     hooksconfig={},
-    runtime_hooks=[],
+    runtime_hooks=[os.path.join(_spec_dir, "runtime_cyclonedds.py")],
     excludes=["pytest", "unittest", "tkinter"],
     noarchive=False,
     optimize=0,
