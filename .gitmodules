@@ -1,0 +1,6 @@
+[submodule "vendor/unitree_sdk2_python"]
+    path = vendor/unitree_sdk2_python
+    url = https://github.com/unitreerobotics/unitree_sdk2_python.git
+[submodule "vendor/cyclonedds"]
+    path = vendor/cyclonedds
+    url = https://github.com/eclipse-cyclonedds/cyclonedds.git

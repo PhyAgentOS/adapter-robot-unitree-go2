@@ -1,0 +1,23 @@
+# "auto" requires exactly one host interface in the Go2 subnet.
+network_interface: auto
+robot_ip: 192.168.123.161
+require_robot_ping: true
+domain_id: 0
+
+rpc_timeout_s: 5.0
+ping_timeout_s: 1.0
+state_wait_s: 5.0
+initial_state_stable_s: 1.0
+state_max_age_s: 0.5
+
+velocity_prepare_s: 1.0
+velocity_watchdog_s: 0.6
+velocity_refresh_s: 0.2
+
+max_vx_mps: 0.3
+max_vy_mps: 0.3
+max_wz_radps: 0.5
+
+max_ax_mps2: 0.5
+max_ay_mps2: 0.5
+max_awz_radps2: 1.0

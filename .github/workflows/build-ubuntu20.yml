@@ -1,0 +1,62 @@
+name: Build Ubuntu 20.04 binaries
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: Git ref to build
+        required: true
+        default: v0.1.0
+      version:
+        description: Release version without the v prefix
+        required: true
+        default: 0.1.0
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: ubuntu:20.04
+    env:
+      RELEASE_VERSION: ${{ inputs.version }}
+    steps:
+      - name: Install system tools
+        run: |
+          apt-get update
+          DEBIAN_FRONTEND=noninteractive apt-get install -y \
+            binutils ca-certificates cmake curl file git libgomp1 make gcc g++
+          rm -rf /var/lib/apt/lists/*
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ inputs.ref }}
+          submodules: recursive
+      - name: Install uv and Python 3.11
+        run: |
+          curl -LsSf https://astral.sh/uv/0.12.5/install.sh | env UV_INSTALL_DIR=/usr/local/bin sh
+          uv python install 3.11
+      - name: Build with PyInstaller
+        run: |
+          ./scripts/build_cyclonedds.sh
+          ./scripts/build_pyinstaller.sh
+      - name: Verify and package binary
+        run: |
+          test "${{ inputs.ref }}" = "v${RELEASE_VERSION}"
+          ./dist/robots_unitree_go2 --help >/dev/null
+          ./dist/robots_unitree_go2 --config configs/config.example.yaml --check-config >/dev/null
+          archive="robots_unitree_go2-v${RELEASE_VERSION}-ubuntu20.04-x86_64.tar.gz"
+          tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 --numeric-owner \
+            -C dist -czf "${archive}" robots_unitree_go2
+          sha256sum "${archive}" > "${archive}.sha256"
+          test "$(tar -tzf "${archive}")" = "robots_unitree_go2"
+          sha256sum --check "${archive}.sha256"
+      - uses: actions/upload-artifact@v6
+        with:
+          name: robots_unitree_go2-v${{ inputs.version }}-ubuntu20.04-x86_64
+          path: |
+            robots_unitree_go2-v${{ inputs.version }}-ubuntu20.04-x86_64.tar.gz
+            robots_unitree_go2-v${{ inputs.version }}-ubuntu20.04-x86_64.tar.gz.sha256
+          if-no-files-found: error
+          retention-days: 30

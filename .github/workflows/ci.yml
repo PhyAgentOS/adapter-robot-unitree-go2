@@ -1,0 +1,59 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          submodules: recursive
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      - name: Install uv
+        run: python -m pip install uv==0.12.5
+      - name: Build Cyclone DDS
+        run: ./scripts/build_cyclonedds.sh
+      - name: Sync locked environment
+        run: CYCLONEDDS_HOME="$PWD/.deps/cyclonedds" uv sync --frozen --extra test
+      - name: Unit tests
+        run: uv run pytest -q
+      - name: Validate package build
+        run: uv build
+      - name: License and public-tree checks
+        run: |
+          test -f LICENSE
+          test -f NOTICE
+          test -f THIRD_PARTY_NOTICES.md
+          test "$(git -C vendor/unitree_sdk2_python rev-parse HEAD)" = "814556d15970dd2ecf1c9984e845ca02ab07e206"
+          test "$(git -C vendor/cyclonedds rev-parse HEAD)" = "9995905bce6c4cf9f740d6438bbf7fcfd1c83dfd"
+          ! git grep -n -E '/home/|192\.168\.123\.222|meta-emt|gitlab\.ex-ai\.cn' -- ':!.github/workflows/*'
+
+  secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          submodules: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      - name: Scan publishable text for secrets
+        run: |
+          python -m pip install detect-secrets==1.5.0
+          detect-secrets scan --all-files --exclude-files '^\.git/' > /tmp/secrets.json
+          python - <<'PY'
+          import json
+          with open('/tmp/secrets.json', encoding='utf-8') as stream:
+              findings = json.load(stream).get('results', {})
+          if findings:
+              raise SystemExit(f'Potential secrets detected: {findings}')
+          PY
