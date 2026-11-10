@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "name": "robots_unitree_go2",
+  "version": "1.0.1",
+  "artifact_id": "robots_unitree_go2-1.0.1-linux-x86_64-tar-gz",
+  "archive_filename": "robots_unitree_go2-1.0.1-linux-x86_64.tar.gz",
+  "sha256": "294bc40bb7f95cfc52d2ead6827249f4982f672c7dc8612da2edd8c844f807f4",
+  "size_bytes": 95928825,
+  "platform": "linux",
+  "arch": "x86_64",
+  "artifact_type": "executable_tar_gz",
+  "entrypoint": "robots_unitree_go2",
+  "build_environment": "Ubuntu 24.04.4 LTS x86_64",
+  "source_repository": "https://github.com/PhyAgentOS/adapter-robot-unitree-go2",
+  "build_source_commit": "777fcd715bf74ecfe4629a1e9fdc484d8bb852c2",
+  "forge_source_commit": "7cda218272557b9f7171ab7573ce9bf8eed54897",
+  "registry_metadata_url": "https://paos-resource-platform.dev.x-era.com/v1/forge-nodes/robots_unitree_go2-1.0.1-linux-x86_64-tar-gz",
+  "managed_release_url": "https://github.com/PhyAgentOS/adapter-robot-unitree-go2/releases/tag/paos-file-d48b2f25-4aa9-4f6b-b0f4-529a47f62f6e"
+}

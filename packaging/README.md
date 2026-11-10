@@ -25,6 +25,8 @@ bash packaging/build.sh
 本地依赖已应用相同补丁时会验证并复用。补丁来源和摘要见 `dependencies.json`。
 
 构建产物为独立单文件节点和单入口 tar.gz，事实记录在 `dist/node-build.json`。
-在其他机器上应重新构建本地制品；本机尚未进行 Ubuntu 20.04 CI 构建或公开发布。
+已发布版本的入口、整包 SHA256、大小和来源提交见
+[`releases/1.0.1.json`](releases/1.0.1.json)。该预编译包在 Ubuntu 24.04 x86_64
+构建并验收，未进行 Ubuntu 20.04 CI 构建；其他系统应先核对兼容性或从源码构建。
 正常运行由 Skill 的 Dora dataflow 启动，HTTP 只绑定本机。启动不 arm；原始
 客户端 `play_go2_real_skill.py` 可继续用作人工验收工具。
