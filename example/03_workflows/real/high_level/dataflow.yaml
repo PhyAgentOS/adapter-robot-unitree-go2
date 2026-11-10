@@ -1,0 +1,11 @@
+nodes:
+  - id: go2_sport
+    path: node.py
+    inputs:
+      tick: dora/timer/millis/100
+    outputs:
+      - status
+    args: >-
+      --config realrobotconfig.yaml
+      --host 127.0.0.1
+      --port 8770

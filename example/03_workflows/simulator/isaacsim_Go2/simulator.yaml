@@ -1,0 +1,51 @@
+stage_path: go2_scene.usda
+gui: true
+
+robots:
+  - id: go2
+    prim_path: /World/Go2
+    articulation_path: /World/Go2/Geometry/base
+    actuator_order:
+      - FL_hip_joint
+      - FL_thigh_joint
+      - FL_calf_joint
+      - FR_hip_joint
+      - FR_thigh_joint
+      - FR_calf_joint
+      - RL_hip_joint
+      - RL_thigh_joint
+      - RL_calf_joint
+      - RR_hip_joint
+      - RR_thigh_joint
+      - RR_calf_joint
+    joints:
+      - {name: FL_hip_joint, mode: position, unit: radians}
+      - {name: FL_thigh_joint, mode: position, unit: radians}
+      - {name: FL_calf_joint, mode: position, unit: radians}
+      - {name: FR_hip_joint, mode: position, unit: radians}
+      - {name: FR_thigh_joint, mode: position, unit: radians}
+      - {name: FR_calf_joint, mode: position, unit: radians}
+      - {name: RL_hip_joint, mode: position, unit: radians}
+      - {name: RL_thigh_joint, mode: position, unit: radians}
+      - {name: RL_calf_joint, mode: position, unit: radians}
+      - {name: RR_hip_joint, mode: position, unit: radians}
+      - {name: RR_thigh_joint, mode: position, unit: radians}
+      - {name: RR_calf_joint, mode: position, unit: radians}
+    initial_state:
+      base_position: [0.0, 0.0, 0.32]
+      base_orientation_wxyz: [1.0, 0.0, 0.0, 0.0]
+      joint_positions:
+        [-0.1, 0.9, -1.8, 0.1, 0.9, -1.8,
+         -0.1, 0.9, -1.8, 0.1, 0.9, -1.8]
+
+policy_state:
+  output: policy_state
+  robot_id: go2
+
+simulation_settings:
+  control_hz: 50
+  physics_dt: 0.005
+  physics_steps_per_tick: 4
+  step_mode: policy_sync
+  warmup_steps: 0
+  max_steps: 0

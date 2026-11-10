@@ -1,0 +1,37 @@
+#! forge_runtime mujoco + 本目录 policy_node（九技能）
+#! 运行: source forge_runtime/.venv && dora build/run（不要 --uv）
+
+nodes:
+  - id: mujoco
+    path: ../../../../../forge_runtime/packages/nodes/simulators/mujoco/main.py
+    inputs:
+      tick: dora/timer/millis/20
+      action: go2_policy/action
+      control_profile: go2_policy/control_profile
+      sim_control: go2_policy/sim_control
+    outputs:
+      - proprio_state
+      - policy_state
+      - image/overview
+      - image/base
+      - sim_status
+    args: >-
+      --config simulator.yaml
+
+  - id: go2_policy
+    path: policy_node.py
+    inputs:
+      policy_state: mujoco/policy_state
+    outputs:
+      - action
+      - control_profile
+      - skill_status
+      - sim_control
+    args: >-
+      --config policyconfig.yaml
+
+  - id: image_viewer
+    path: ../../../../../forge_runtime/packages/nodes/viewers/image_viewer/main.py
+    inputs:
+      image/overview: mujoco/image/overview
+      image/base: mujoco/image/base

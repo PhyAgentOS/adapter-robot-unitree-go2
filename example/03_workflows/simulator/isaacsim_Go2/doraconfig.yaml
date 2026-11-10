@@ -1,0 +1,6 @@
+# Policy selected for both Dora nodes.
+policy: footstand
+policy_root: ../../../../../unitree-rl/unitree_rl_mjlab/deploy/robots/go2/config/policy
+
+# Body-frame command [vx, vy, yaw_rate]. Clipped by deploy.yaml ranges.
+command: [0.35, 0.0, 0.0]

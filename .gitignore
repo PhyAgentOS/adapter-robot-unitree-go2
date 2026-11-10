@@ -1,9 +1,11 @@
-.venv/
-.venv_build/
-.deps/
-.pytest_cache/
 __pycache__/
 *.py[cod]
-build/
+.pytest_cache/
+**/out/
+.venv/
+.venv_build/
+.venv_build.requirements.txt
 dist/
+build/
 *.egg-info/
+uv.lock

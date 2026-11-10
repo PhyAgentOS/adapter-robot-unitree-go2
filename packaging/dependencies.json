@@ -1,0 +1,19 @@
+{
+  "unitree_sdk2_python": {
+    "repository": "https://github.com/unitreerobotics/unitree_sdk2_python",
+    "commit": "814556d15970dd2ecf1c9984e845ca02ab07e206"
+  },
+  "cyclonedds": {
+    "repository": "https://github.com/eclipse-cyclonedds/cyclonedds",
+    "commit": "9995905bce6c4cf9f740d6438bbf7fcfd1c83dfd",
+    "patches": [
+      {
+        "file": "patches/cyclonedds-tracing-buffer.patch",
+        "upstream_commit": "5041f3560c088c99e5088b2b8520b69169621196",
+        "upstream_url": "https://raw.githubusercontent.com/eclipse-cyclonedds/cyclonedds/5041f3560c088c99e5088b2b8520b69169621196/src/core/ddsi/src/ddsi_config.c",
+        "sha256": "2ca46550cacead5c80e3c8000f00d7bde907c64450657dbae32044976e2c23bf",
+        "reason": "Backport bounded tracing bitset formatting; fixes GCC/glibc fortify abort during DDS initialization"
+      }
+    ]
+  }
+}

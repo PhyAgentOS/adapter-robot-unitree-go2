@@ -1,0 +1,7 @@
+# 已弃用：Low Level 工作流已改为 robots_go2 + go2_config.yaml。
+# 请编辑同目录 go2_config.yaml（low_level_output_enabled 等）。
+#
+# 以下内容仅保留对照，不再被 dataflow 引用。
+network_interface: auto
+default_backend: low_level
+low_level_output_enabled: false

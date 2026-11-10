@@ -1,0 +1,27 @@
+initial_skill: fixstand
+initial_velocity: [0.0, 0.0, 0.0]
+http_host: 127.0.0.1
+http_port: 8770
+
+policies:
+  velocity:
+    onnx: ../../../../../unitree-rl/unitree_rl_mjlab/deploy/robots/go2/config/policy/velocity/v0/exported/policy.onnx
+    deploy: ../../../../../unitree-rl/unitree_rl_mjlab/deploy/robots/go2/config/policy/velocity/v0/params/deploy.yaml
+  stairs_blind:
+    onnx: ../../../../../unitree-rl/unitree_rl_mjlab/deploy/robots/go2/config/policy/stairs_blind/v0/exported/policy.onnx
+    deploy: ../../../../../unitree-rl/unitree_rl_mjlab/deploy/robots/go2/config/policy/stairs_blind/v0/params/deploy.yaml
+  footstand:
+    onnx: ../../../../../unitree-rl/unitree_rl_mjlab/deploy/robots/go2/config/policy/footstand/v0/exported/policy.onnx
+    deploy: ../../../../../unitree-rl/unitree_rl_mjlab/deploy/robots/go2/config/policy/footstand/v0/params/deploy.yaml
+  handstand:
+    onnx: ../../../../../unitree-rl/unitree_rl_mjlab/deploy/robots/go2/config/policy/handstand/v0/exported/policy.onnx
+    deploy: ../../../../../unitree-rl/unitree_rl_mjlab/deploy/robots/go2/config/policy/handstand/v0/params/deploy.yaml
+  getup:
+    onnx: ../../../../../unitree-rl/unitree_rl_mjlab/deploy/robots/go2/config/policy/getup/v0/exported/policy.onnx
+    deploy: ../../../../../unitree-rl/unitree_rl_mjlab/deploy/robots/go2/config/policy/getup/v0/params/deploy.yaml
+  bound:
+    onnx: ../../../../../unitree-rl/unitree_rl_mjlab/deploy/robots/go2/config/policy/bound/v0/exported/policy.onnx
+    deploy: ../../../../../unitree-rl/unitree_rl_mjlab/deploy/robots/go2/config/policy/bound/v0/params/deploy.yaml
+  pronk:
+    onnx: ../../../../../unitree-rl/unitree_rl_mjlab/deploy/robots/go2/config/policy/pronk/v0/exported/policy.onnx
+    deploy: ../../../../../unitree-rl/unitree_rl_mjlab/deploy/robots/go2/config/policy/pronk/v0/params/deploy.yaml

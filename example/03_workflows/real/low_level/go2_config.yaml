@@ -1,0 +1,11 @@
+# robots_go2（Forge BaseRobotDriver）Low Level 工作流配置
+# network_interface=auto 要求恰好一张网卡拥有 192.168.123.x
+network_interface: auto
+move_duration: 1.0
+control_hz: 500
+state_timeout: 5.0
+is_follower: true
+debug: false
+
+# 安全默认：只读 rt/lowstate。架空 12 关节序列写电机前改为 true。
+low_level_output_enabled: false

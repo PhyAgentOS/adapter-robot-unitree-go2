@@ -1,0 +1,33 @@
+#! forge_runtime mujoco + local joint_sweep_source.py
+#! 必须先 source forge_runtime/.venv，再 dora build/run（不要加 --uv）
+#! 运行: dora build dataflow.yaml && dora run dataflow.yaml
+
+nodes:
+  - id: mujoco
+    path: ../../../../../forge_runtime/packages/nodes/simulators/mujoco/main.py
+    inputs:
+      tick: dora/timer/millis/20
+      action: joint_sweep_source/action
+    outputs:
+      - proprio_state
+      - image/overview
+      - image/base
+    args: >-
+      --config simulator.yaml
+
+  - id: joint_sweep_source
+    path: joint_sweep_source.py
+    inputs:
+      tick: dora/timer/millis/20
+    outputs:
+      - action
+    args: >-
+      --phase-seconds 1.5
+      --hold-seconds 0.75
+      --startup-hold-seconds 2.0
+
+  - id: image_viewer
+    path: ../../../../../forge_runtime/packages/nodes/viewers/image_viewer/main.py
+    inputs:
+      image/overview: mujoco/image/overview
+      image/base: mujoco/image/base

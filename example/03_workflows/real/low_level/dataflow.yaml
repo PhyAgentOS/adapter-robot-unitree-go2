@@ -1,0 +1,34 @@
+#! Low Level：robots_go2 (BaseRobotDriver / JointCommand) + joint_sequence_source
+#! 前置：
+#!   1) 仰面架空、急停可达、已 ReleaseMode
+#!   2) go2_config.yaml 中 low_level_output_enabled: true（写电机时）
+#! 默认 low_level_output_enabled=false 时，driver 会拒绝 action，可先只观察日志/连线
+#!
+#! 运行:
+#!   dora build dataflow.yaml
+#!   dora run dataflow.yaml
+
+nodes:
+  - id: go2
+    path: ../../../../src/robots_go2/main.py
+    inputs:
+      tick: dora/timer/millis/20
+      action: joint_sequence_source/action
+    outputs:
+      - state
+    args: run --config go2_config.yaml
+
+  - id: joint_sequence_source
+    path: joint_sequence_source.py
+    inputs:
+      tick: dora/timer/millis/50
+      state: go2/state
+    outputs:
+      - action
+    args: >-
+      --startup-delay-sec 5
+      --move-sec 1.2
+      --hold-sec 0.5
+      --between-joints-sec 0.5
+      --confirm-suspended
+      --confirm-high-risk

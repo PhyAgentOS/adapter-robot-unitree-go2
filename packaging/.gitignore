@@ -1,0 +1,6 @@
+.venv/
+.deps/
+.build/
+__pycache__/
+vendor/**/__pycache__/
+!uv.lock

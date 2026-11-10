@@ -1,0 +1,49 @@
+# MuJoCo 节点：Go2（scene.xml + attach prefix=item_1/）
+# model_path 相对本文件所在目录解析
+model_path: ../../../../assets/mjcf/scene.xml
+control_hz: 50
+image_format: raw
+initial_keyframe: home
+
+# overview 为场景第三人称相机；base_cam 为机器狗第一视角。
+image_forward:
+  overview: { output: "image/overview", fps: 30, width: 960, height: 540 }
+  item_1/base_cam: { output: "image/base", fps: 30, width: 1280, height: 720 }
+
+# 强化学习策略所需的 12 关节位置/速度、机体四元数和机体系角速度。
+policy_state:
+  output: policy_state
+  robot_id: robot_0
+  body: base
+
+# Action / ProprioState 的关节顺序（与 robots.joint_to_actuator 的键一致）
+joints:
+  - { name: FL_hip_joint, mode: position, unit: radians }
+  - { name: FL_thigh_joint, mode: position, unit: radians }
+  - { name: FL_calf_joint, mode: position, unit: radians }
+  - { name: FR_hip_joint, mode: position, unit: radians }
+  - { name: FR_thigh_joint, mode: position, unit: radians }
+  - { name: FR_calf_joint, mode: position, unit: radians }
+  - { name: RL_hip_joint, mode: position, unit: radians }
+  - { name: RL_thigh_joint, mode: position, unit: radians }
+  - { name: RL_calf_joint, mode: position, unit: radians }
+  - { name: RR_hip_joint, mode: position, unit: radians }
+  - { name: RR_thigh_joint, mode: position, unit: radians }
+  - { name: RR_calf_joint, mode: position, unit: radians }
+
+robots:
+  - id: robot_0
+    prefix: item_1/
+    joints:
+      - FL_hip_joint
+      - FL_thigh_joint
+      - FL_calf_joint
+      - FR_hip_joint
+      - FR_thigh_joint
+      - FR_calf_joint
+      - RL_hip_joint
+      - RL_thigh_joint
+      - RL_calf_joint
+      - RR_hip_joint
+      - RR_thigh_joint
+      - RR_calf_joint

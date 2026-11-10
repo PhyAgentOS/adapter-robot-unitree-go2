@@ -1,5 +1,7 @@
-Unitree Go2 Robot Adapter
+Unitree Go2 Forge Robot Package
 Copyright 2026 PhyAgentOS Contributors
 
-This product includes Unitree SDK2 Python. Its copyright and license notice
-is listed in THIRD_PARTY_NOTICES.md and in the referenced submodule.
+This distribution preserves the complete Forge unitree_go2 robot package.
+Original source provenance is recorded in packaging/forge-source.json.
+Third-party dependency notices are listed in THIRD_PARTY_NOTICES.md and
+retained in the corresponding packaging/vendor source directories.

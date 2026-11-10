@@ -1,0 +1,24 @@
+nodes:
+  - id: isaacsim
+    path: ../../../../../issac_sim/src/issac_sim/main.py
+    inputs:
+      tick: dora/timer/millis/20
+      action: go2_policy/action
+      control_profile: go2_policy/control_profile
+    outputs:
+      - policy_state
+      - proprio_state
+      - sim_status
+      - done
+    args: >-
+      --config simulator.yaml
+
+  - id: go2_policy
+    path: dora_policy_node.py
+    inputs:
+      policy_state: isaacsim/policy_state
+    outputs:
+      - action
+      - control_profile
+    args: >-
+      --config doraconfig.yaml

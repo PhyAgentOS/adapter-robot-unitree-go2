@@ -1,0 +1,12 @@
+# Forge 标准真机节点配置（robots_go2 / BaseRobotDriver）
+# network_interface=auto 要求恰好一张网卡拥有 192.168.123.x
+network_interface: auto
+move_duration: 2.0
+control_hz: 500
+state_timeout: 5.0
+is_follower: true
+debug: false
+
+# 安全默认：只读 rt/lowstate，拒绝写入 rt/lowcmd。
+# 架空验收写电机前务必改为 true，并确认 MotionSwitcher 已释放。
+low_level_output_enabled: false

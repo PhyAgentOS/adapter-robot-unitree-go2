@@ -1,0 +1,16 @@
+# "auto" only succeeds when exactly one interface owns a 192.168.123.x address.
+network_interface: auto
+motion_switcher_timeout_sec: 10.0
+
+sdk_timeout_sec: 10.0
+sdk_stand_down_wait_sec: 3.0
+sdk_velocity_prepare_wait_sec: 1.0
+sdk_state_wait_sec: 5.0
+sdk_state_max_age_sec: 0.5
+sdk_max_vx: 0.3
+sdk_max_vy: 0.2
+sdk_max_wz: 0.5
+
+# Movement stops unless velocity commands are refreshed.
+velocity_timeout_sec: 0.6
+velocity_refresh_sec: 0.2
