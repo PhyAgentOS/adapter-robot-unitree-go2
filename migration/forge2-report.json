@@ -1,7 +1,6 @@
 {
   "repository": "adapter-robot-unitree-go2",
   "node_candidate_version": "2.0.0",
-  "baseline_commit": "f89a7b6f194370c97ea77b23508e662af8dde2dd",
   "changes": [
     "Use public Forge 2.x packages instead of old private Git sources.",
     "Resolve SDK from the repository-pinned official submodule; update packaging lock as well as root project.",
