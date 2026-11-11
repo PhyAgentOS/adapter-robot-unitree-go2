@@ -13,7 +13,48 @@
     ]
   },
   "dora_cli": "1.0.1",
-  "runtime_records": [],
+  "runtime_records": [
+    {
+      "repo": "adapter-robot-unitree-go2",
+      "entry": "unitree-go2",
+      "mode": "chain",
+      "command": [
+        "${WORKSPACE}/.test-env/bin/dora",
+        "run",
+        "${WORKSPACE}/validation/forge2/runtime-blocked/unitree-go2/chain/dataflow.yaml",
+        "--stop-after",
+        "4s"
+      ],
+      "includes_gateway": true,
+      "exit_code": 1,
+      "passed": false,
+      "status": "blocked / not accepted",
+      "elapsed_seconds": 5.416,
+      "error": null,
+      "scope": "Negative prerequisite diagnostic with unavailable local hardware endpoints, no physical actuation or remote SSH, and no model downloads. Not a successful node-operation or compatibility result.",
+      "log_file": "validation/forge2/runtime-blocked/unitree-go2/chain/dora.log"
+    },
+    {
+      "repo": "adapter-robot-unitree-go2",
+      "entry": "unitree-go2",
+      "mode": "single",
+      "command": [
+        "${WORKSPACE}/.test-env/bin/dora",
+        "run",
+        "${WORKSPACE}/validation/forge2/runtime-blocked/unitree-go2/single/dataflow.yaml",
+        "--stop-after",
+        "4s"
+      ],
+      "includes_gateway": false,
+      "exit_code": 1,
+      "passed": false,
+      "status": "blocked / not accepted",
+      "elapsed_seconds": 5.438,
+      "error": null,
+      "scope": "Negative prerequisite diagnostic with unavailable local hardware endpoints, no physical actuation or remote SSH, and no model downloads. Not a successful node-operation or compatibility result.",
+      "log_file": "validation/forge2/runtime-blocked/unitree-go2/single/dora.log"
+    }
+  ],
   "runtime_missing": "Native Cyclone DDS/Unitree environment and robot are unavailable; no repository unit suite exists; production Dora and Gateway chain are pending.",
   "acceptance": "Pending final platform artifacts, applicable hardware/model execution and rollback/sustained-run gates.",
   "pillow_dependency": "Node locks currently resolve published Forge Msgs 2.0.0. Security audit remains dependent on Forge PR #3 and a published security-fixed Msgs release; no vulnerability suppression was added.",
