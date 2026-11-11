@@ -1,0 +1,22 @@
+{
+  "repository": "adapter-robot-unitree-go2",
+  "node_candidate_version": "2.0.0",
+  "baseline_commit": "f89a7b6f194370c97ea77b23508e662af8dde2dd",
+  "changes": [
+    "Use public Forge 2.x packages instead of old private Git sources.",
+    "Resolve SDK from the repository-pinned official submodule; update packaging lock as well as root project.",
+    "Synchronize English/Chinese root README guidance and frozen dependencies."
+  ],
+  "software_tests": {
+    "log": null,
+    "summary": [
+      "No local numeric test summary available."
+    ]
+  },
+  "dora_cli": "1.0.1",
+  "runtime_records": [],
+  "runtime_missing": "Native Cyclone DDS/Unitree environment and robot are unavailable; no repository unit suite exists; production Dora and Gateway chain are pending.",
+  "acceptance": "Pending final platform artifacts, applicable hardware/model execution and rollback/sustained-run gates.",
+  "pillow_dependency": "Node locks currently resolve published Forge Msgs 2.0.0. Security audit remains dependent on Forge PR #3 and a published security-fixed Msgs release; no vulnerability suppression was added.",
+  "gitlab_synchronization": "Not started; follows full acceptance."
+}
