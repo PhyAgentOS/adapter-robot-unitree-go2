@@ -1,14 +1,14 @@
 [project]
 name = "robots-go2"
-version = "0.1.0"
+version = "2.0.0"
 description = "Unitree Go2 Forge robot driver and Dora node"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "dora-rs==0.4.1",
-    "forge-common",
-    "forge-msgs",
-    "forge-robot",
+    "dora-rs>=1.0.1,<2",
+    "forge-common>=2.1.0,<3",
+    "forge-msgs>=2.1.0,<3",
+    "forge-robot>=2.0.0,<3",
     "numpy>=1.26",
     "pyyaml>=6.0",
     "typer>=0.12",
@@ -28,10 +28,7 @@ module-name = "robots_go2"
 module-root = "src"
 
 [tool.uv.sources]
-forge-common = { git = "https://gitlab.ex-ai.cn/meta-emt/framework/forge.git", subdirectory = "packages/common" }
-forge-msgs = { git = "https://gitlab.ex-ai.cn/meta-emt/framework/forge.git", subdirectory = "packages/msgs" }
-forge-robot = { git = "https://gitlab.ex-ai.cn/meta-emt/framework/forge.git", subdirectory = "packages/robot" }
-unitree-sdk2py = { path = "../unitree_sdk2_python" }
+unitree-sdk2py = { path = "packaging/vendor/unitree_sdk2_python" }
 
 [dependency-groups]
 dev = [
