@@ -1,0 +1,8 @@
+{
+  "original_commit": "7cda218272557b9f7171ab7573ce9bf8eed54897",
+  "reason": "Forge 1.x node version normalization and bilingual release documentation",
+  "files": {
+    "README.md": "1c4cf5bfc5cdec356d43ebe1db9f64c2e0caa0c90fbae8f55f3b8d458597bd5a",
+    "pyproject.toml": "9afba80449d7746a820cea178dca7692f7bc85401f096537168a9be20159dfd2"
+  }
+}
